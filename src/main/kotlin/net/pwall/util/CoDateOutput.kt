@@ -25,8 +25,6 @@
 
 package net.pwall.util
 
-import kotlin.math.abs
-
 import java.time.Instant
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -216,8 +214,13 @@ object CoDateOutput {
         if (seconds == 0)
             output('Z')
         else {
-            output(if (seconds < 0) '-' else '+')
-            val s = abs(seconds)
+            val s = if (seconds < 0) {
+                output('-')
+                -seconds
+            } else {
+                output('+')
+                seconds
+            }
             val hours = s / SECONDS_PER_HOUR
             val minutes = (s - hours * SECONDS_PER_HOUR) / SECONDS_PER_MINUTE
             output2Digits(hours)
