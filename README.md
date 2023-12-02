@@ -19,25 +19,25 @@ output.
 
 ## Dependency Specification
 
-The latest version of the library is 1.3, and it may be obtained from the Maven Central repository.
+The latest version of the library is 1.4, and it may be obtained from the Maven Central repository.
 
 ### Maven
 ```xml
     <dependency>
       <groupId>net.pwall.util</groupId>
       <artifactId>co-date-output</artifactId>
-      <version>1.3</version>
+      <version>1.4</version>
     </dependency>
 ```
 ### Gradle
 ```groovy
-    implementation 'net.pwall.util:co-date-output:1.3'
+    implementation 'net.pwall.util:co-date-output:1.4'
 ```
 ### Gradle (kts)
 ```kotlin
-    implementation("net.pwall.util:co-date-output:1.3")
+    implementation("net.pwall.util:co-date-output:1.4")
 ```
 
 Peter Wall
 
-2023-11-10
+2023-12-02
