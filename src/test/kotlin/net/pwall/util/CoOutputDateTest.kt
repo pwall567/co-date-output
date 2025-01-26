@@ -26,7 +26,6 @@
 package net.pwall.util
 
 import kotlin.test.Test
-import kotlin.test.expect
 import kotlinx.coroutines.runBlocking
 
 import java.time.LocalDate
@@ -42,6 +41,8 @@ import java.time.ZoneOffset
 import java.time.ZonedDateTime
 import java.util.Calendar
 import java.util.Date
+
+import io.kstuff.test.shouldBe
 
 import net.pwall.util.CoDateOutput.coOutputCalendar
 import net.pwall.util.CoDateOutput.coOutputDate
@@ -75,14 +76,14 @@ class CoOutputDateTest {
         var i = 0
         val instant = OffsetDateTime.of(2022, 4, 8, 18, 39, 2, 456_000_000, ZoneOffset.UTC).toInstant()
         coOutputDate(Date.from(instant)) { charArray[i++] = it }
-        expect("2022-04-08T18:39:02.456Z") { String(charArray, 0, i) }
+        String(charArray, 0, i) shouldBe "2022-04-08T18:39:02.456Z"
     }
 
     @Test fun `should output Date using extension function`() = runBlocking {
         val capture = CoCapture()
         val instant = OffsetDateTime.of(2022, 4, 8, 18, 39, 2, 456_000_000, ZoneOffset.UTC).toInstant()
         capture.outputDate(Date.from(instant))
-        expect("2022-04-08T18:39:02.456Z") { capture.toString() }
+        capture.toString() shouldBe "2022-04-08T18:39:02.456Z"
     }
 
     @Test fun `should output Calendar using lambda`() = runBlocking {
@@ -98,7 +99,7 @@ class CoOutputDateTest {
         calendar.set(Calendar.MILLISECOND, 456)
         calendar.set(Calendar.ZONE_OFFSET, 10 * 60 * 60 * 1000)
         coOutputCalendar(calendar) { charArray[i++] = it }
-        expect("2022-04-08T18:39:02.456+10:00") { String(charArray, 0, i) }
+        String(charArray, 0, i) shouldBe "2022-04-08T18:39:02.456+10:00"
     }
 
     @Test fun `should output Calendar using extension function`() = runBlocking {
@@ -113,7 +114,7 @@ class CoOutputDateTest {
         calendar.set(Calendar.MILLISECOND, 456)
         calendar.set(Calendar.ZONE_OFFSET, 10 * 60 * 60 * 1000)
         capture.outputCalendar(calendar)
-        expect("2022-04-08T18:39:02.456+10:00") { capture.toString() }
+        capture.toString() shouldBe "2022-04-08T18:39:02.456+10:00"
     }
 
     @Test fun `should output Instant using lambda`() = runBlocking {
@@ -123,7 +124,7 @@ class CoOutputDateTest {
         val offsetDateTime = OffsetDateTime.of(localDateTime, ZoneOffset.ofHours(10))
         val instant = offsetDateTime.toInstant()
         coOutputInstant(instant) { charArray[i++] = it }
-        expect("2022-04-07T08:32:47.120Z") { String(charArray, 0, i) }
+        String(charArray, 0, i) shouldBe "2022-04-07T08:32:47.120Z"
     }
 
     @Test fun `should output Instant using extension function`() = runBlocking {
@@ -132,7 +133,7 @@ class CoOutputDateTest {
         val offsetDateTime = OffsetDateTime.of(localDateTime, ZoneOffset.ofHours(10))
         val instant = offsetDateTime.toInstant()
         capture.outputInstant(instant)
-        expect("2022-04-07T08:32:47.120Z") { capture.toString() }
+        capture.toString() shouldBe "2022-04-07T08:32:47.120Z"
     }
 
     @Test fun `should output ZonedDateTime using lambda`() = runBlocking {
@@ -141,7 +142,7 @@ class CoOutputDateTest {
         val localDateTime = LocalDateTime.parse("2022-04-07T18:32:47.55")
         val zonedDateTime = ZonedDateTime.of(localDateTime, ZoneId.of("Australia/Sydney"))
         coOutputZonedDateTime(zonedDateTime) { charArray[i++] = it }
-        expect("2022-04-07T18:32:47.550+10:00") { String(charArray, 0, i) }
+        String(charArray, 0, i) shouldBe "2022-04-07T18:32:47.550+10:00"
     }
 
     @Test fun `should output ZonedDateTime using extension function`() = runBlocking {
@@ -149,7 +150,7 @@ class CoOutputDateTest {
         val localDateTime = LocalDateTime.parse("2022-04-07T18:32:47.55")
         val zonedDateTime = ZonedDateTime.of(localDateTime, ZoneId.of("Australia/Sydney"))
         capture.outputZonedDateTime(zonedDateTime)
-        expect("2022-04-07T18:32:47.550+10:00") { capture.toString() }
+        capture.toString() shouldBe "2022-04-07T18:32:47.550+10:00"
     }
 
     @Test fun `should output OffsetDateTime using lambda`() = runBlocking {
@@ -158,13 +159,13 @@ class CoOutputDateTest {
         LocalDateTime.parse("2022-04-07T18:32:47.5446").let { localDateTime ->
             val offsetDateTime = OffsetDateTime.of(localDateTime, ZoneOffset.ofHours(10))
             coOutputOffsetDateTime(offsetDateTime) { charArray[i++] = it }
-            expect("2022-04-07T18:32:47.544600+10:00") { String(charArray, 0, i) }
+            String(charArray, 0, i) shouldBe "2022-04-07T18:32:47.544600+10:00"
         }
         i = 0
         LocalDateTime.of(1999, 6, 1, 9, 15, 10, 456_000_000).let { localDateTime ->
             val offsetDateTime = OffsetDateTime.of(localDateTime, ZoneOffset.UTC)
             coOutputOffsetDateTime(offsetDateTime) { charArray[i++] = it }
-            expect("1999-06-01T09:15:10.456Z") { String(charArray, 0, i) }
+            String(charArray, 0, i) shouldBe "1999-06-01T09:15:10.456Z"
         }
     }
 
@@ -173,13 +174,13 @@ class CoOutputDateTest {
         LocalDateTime.parse("2022-04-07T18:32:47.5446").let { localDateTime ->
             val offsetDateTime = OffsetDateTime.of(localDateTime, ZoneOffset.ofHours(10))
             capture.outputOffsetDateTime(offsetDateTime)
-            expect("2022-04-07T18:32:47.544600+10:00") { capture.toString() }
+            capture.toString() shouldBe "2022-04-07T18:32:47.544600+10:00"
         }
         capture.reset()
         LocalDateTime.of(1999, 6, 1, 9, 15, 10, 456_000_000).let { localDateTime ->
             val offsetDateTime = OffsetDateTime.of(localDateTime, ZoneOffset.UTC)
             capture.outputOffsetDateTime(offsetDateTime)
-            expect("1999-06-01T09:15:10.456Z") { capture.toString() }
+            capture.toString() shouldBe "1999-06-01T09:15:10.456Z"
         }
     }
 
@@ -188,14 +189,14 @@ class CoOutputDateTest {
         var i = 0
         val offsetTime = OffsetTime.of(8, 27, 55, 544_233_100, ZoneOffset.ofHours(-5))
         coOutputOffsetTime(offsetTime) { charArray[i++] = it }
-        expect("08:27:55.544233100-05:00") { String(charArray, 0, i) }
+        String(charArray, 0, i) shouldBe "08:27:55.544233100-05:00"
     }
 
     @Test fun `should output OffsetTime using extension function`() = runBlocking {
         val capture = CoCapture()
         val offsetTime = OffsetTime.of(8, 27, 55, 544_233_100, ZoneOffset.ofHours(-5))
         capture.outputOffsetTime(offsetTime)
-        expect("08:27:55.544233100-05:00") { capture.toString() }
+        capture.toString() shouldBe "08:27:55.544233100-05:00"
     }
 
     @Test fun `should output LocalDateTime using lambda`() = runBlocking {
@@ -203,12 +204,12 @@ class CoOutputDateTest {
         var i = 0
         LocalDateTime.parse("2022-04-07T18:32:47.544").let { localDateTime ->
             coOutputLocalDateTime(localDateTime) { charArray[i++] = it }
-            expect("2022-04-07T18:32:47.544") { String(charArray, 0, i) }
+            String(charArray, 0, i) shouldBe "2022-04-07T18:32:47.544"
         }
         i = 0
         LocalDateTime.parse("1999-04-01T08:45").let { localDateTime ->
             coOutputLocalDateTime(localDateTime) { charArray[i++] = it }
-            expect("1999-04-01T08:45:00") { String(charArray, 0, i) }
+            String(charArray, 0, i) shouldBe "1999-04-01T08:45:00"
         }
     }
 
@@ -216,12 +217,12 @@ class CoOutputDateTest {
         val capture = CoCapture()
         LocalDateTime.parse("2022-04-07T18:32:47.544").let { localDateTime ->
             capture.outputLocalDateTime(localDateTime)
-            expect("2022-04-07T18:32:47.544") { capture.toString() }
+            capture.toString() shouldBe "2022-04-07T18:32:47.544"
         }
         capture.reset()
         LocalDateTime.parse("1999-04-01T08:45").let { localDateTime ->
             capture.outputLocalDateTime(localDateTime)
-            expect("1999-04-01T08:45:00") { capture.toString() }
+            capture.toString() shouldBe "1999-04-01T08:45:00"
         }
     }
 
@@ -230,15 +231,15 @@ class CoOutputDateTest {
         var i = 0
         LocalDate.of(2022, 4, 7).let { localDate ->
             coOutputLocalDate(localDate) { charArray[i++] = it }
-            expect("2022-04-07") { String(charArray, 0, i) }
+            String(charArray, 0, i) shouldBe "2022-04-07"
         }
         i = 0
         LocalDate.parse("1999-12-31").let { localDate ->
             coOutputLocalDate(localDate) { charArray[i++] = it }
-            expect("1999-12-31") {  String(charArray, 0, i) }
+            String(charArray, 0, i) shouldBe "1999-12-31"
             i = 0
             coOutputLocalDate(localDate.plusDays(1)) { charArray[i++] = it }
-            expect("2000-01-01") { String(charArray, 0, i) }
+            String(charArray, 0, i) shouldBe "2000-01-01"
         }
     }
 
@@ -246,15 +247,15 @@ class CoOutputDateTest {
         val capture = CoCapture()
         LocalDate.of(2022, 4, 7).let { localDate ->
             capture.outputLocalDate(localDate)
-            expect("2022-04-07") { capture.toString() }
+            capture.toString() shouldBe "2022-04-07"
         }
         capture.reset()
         LocalDate.parse("1999-12-31").let { localDate ->
             capture.outputLocalDate(localDate)
-            expect("1999-12-31") { capture.toString() }
+            capture.toString() shouldBe "1999-12-31"
             capture.reset()
             capture.outputLocalDate(localDate.plusDays(1))
-            expect("2000-01-01") { capture.toString() }
+            capture.toString() shouldBe "2000-01-01"
         }
     }
 
@@ -263,21 +264,21 @@ class CoOutputDateTest {
         var i = 0
         LocalTime.of(14, 3, 0).let { localTime ->
             coOutputLocalTime(localTime) { charArray[i++] = it }
-            expect("14:03:00") { String(charArray, 0, i) }
+            String(charArray, 0, i) shouldBe "14:03:00"
         }
         i = 0
         LocalTime.parse("09:31:27").let { localTime ->
             coOutputLocalTime(localTime) { charArray[i++] = it }
-            expect("09:31:27") { String(charArray, 0, i) }
+            String(charArray, 0, i) shouldBe "09:31:27"
             i = 0
             coOutputLocalTime(localTime.withNano(230000000)) { charArray[i++] = it }
-            expect("09:31:27.230") { String(charArray, 0, i) }
+            String(charArray, 0, i) shouldBe "09:31:27.230"
             i = 0
             coOutputLocalTime(localTime.withNano(234500000)) { charArray[i++] = it }
-            expect("09:31:27.234500") { String(charArray, 0, i) }
+            String(charArray, 0, i) shouldBe "09:31:27.234500"
             i = 0
             coOutputLocalTime(localTime.withNano(234567890)) { charArray[i++] = it }
-            expect("09:31:27.234567890") { String(charArray, 0, i) }
+            String(charArray, 0, i) shouldBe "09:31:27.234567890"
         }
     }
 
@@ -285,21 +286,21 @@ class CoOutputDateTest {
         val capture = CoCapture()
         LocalTime.of(14, 3, 0).let { localTime ->
             capture.outputLocalTime(localTime)
-            expect("14:03:00") { capture.toString() }
+            capture.toString() shouldBe "14:03:00"
         }
         capture.reset()
         LocalTime.parse("09:31:27").let { localTime ->
             capture.outputLocalTime(localTime)
-            expect("09:31:27") { capture.toString() }
+            capture.toString() shouldBe "09:31:27"
             capture.reset()
             capture.outputLocalTime(localTime.withNano(230000000))
-            expect("09:31:27.230") { capture.toString() }
+            capture.toString() shouldBe "09:31:27.230"
             capture.reset()
             capture.outputLocalTime(localTime.withNano(234500000))
-            expect("09:31:27.234500") { capture.toString() }
+            capture.toString() shouldBe "09:31:27.234500"
             capture.reset()
             capture.outputLocalTime(localTime.withNano(234567890))
-            expect("09:31:27.234567890") { capture.toString() }
+            capture.toString() shouldBe "09:31:27.234567890"
         }
     }
 
@@ -307,39 +308,39 @@ class CoOutputDateTest {
         val charArray = CharArray(32)
         var i = 0
         coOutputYear(Year.of(2022)) { charArray[i++] = it }
-        expect("2022") { String(charArray, 0, i) }
+        String(charArray, 0, i) shouldBe "2022"
     }
 
     @Test fun `should output Year using extension function`() = runBlocking {
         val capture = CoCapture()
         capture.outputYear(Year.of(2022))
-        expect("2022") { capture.toString() }
+        capture.toString() shouldBe "2022"
     }
 
     @Test fun `should output YearMonth using lambda`() = runBlocking {
         val charArray = CharArray(32)
         var i = 0
         coOutputYearMonth(YearMonth.of(2022, 4)) { charArray[i++] = it }
-        expect("2022-04") { String(charArray, 0, i) }
+        String(charArray, 0, i) shouldBe "2022-04"
     }
 
     @Test fun `should output YearMonth using extension function`() = runBlocking {
         val capture = CoCapture()
         capture.outputYearMonth(YearMonth.of(2022, 4))
-        expect("2022-04") { capture.toString() }
+        capture.toString() shouldBe "2022-04"
     }
 
     @Test fun `should output MonthDay using lambda`() = runBlocking {
         val charArray = CharArray(32)
         var i = 0
         coOutputMonthDay(MonthDay.of(4, 8)) { charArray[i++] = it }
-        expect("--04-08") { String(charArray, 0, i) }
+        String(charArray, 0, i) shouldBe "--04-08"
     }
 
     @Test fun `should output MonthDay using extension function`() = runBlocking {
         val capture = CoCapture()
         capture.outputMonthDay(MonthDay.of(4, 8))
-        expect("--04-08") { capture.toString() }
+        capture.toString() shouldBe "--04-08"
     }
 
     class CoCapture(size: Int = 256) : CoOutput {
