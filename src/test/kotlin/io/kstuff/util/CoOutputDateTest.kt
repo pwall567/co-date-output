@@ -23,7 +23,7 @@
  * SOFTWARE.
  */
 
-package net.pwall.util
+package io.kstuff.util
 
 import kotlin.test.Test
 import kotlinx.coroutines.runBlocking
@@ -44,30 +44,30 @@ import java.util.Date
 
 import io.kstuff.test.shouldBe
 
-import net.pwall.util.CoDateOutput.coOutputCalendar
-import net.pwall.util.CoDateOutput.coOutputDate
-import net.pwall.util.CoDateOutput.coOutputInstant
-import net.pwall.util.CoDateOutput.coOutputLocalDate
-import net.pwall.util.CoDateOutput.coOutputLocalDateTime
-import net.pwall.util.CoDateOutput.coOutputLocalTime
-import net.pwall.util.CoDateOutput.coOutputMonthDay
-import net.pwall.util.CoDateOutput.coOutputOffsetDateTime
-import net.pwall.util.CoDateOutput.coOutputOffsetTime
-import net.pwall.util.CoDateOutput.coOutputYear
-import net.pwall.util.CoDateOutput.coOutputYearMonth
-import net.pwall.util.CoDateOutput.coOutputZonedDateTime
-import net.pwall.util.CoDateOutput.outputCalendar
-import net.pwall.util.CoDateOutput.outputDate
-import net.pwall.util.CoDateOutput.outputInstant
-import net.pwall.util.CoDateOutput.outputLocalDate
-import net.pwall.util.CoDateOutput.outputLocalDateTime
-import net.pwall.util.CoDateOutput.outputLocalTime
-import net.pwall.util.CoDateOutput.outputMonthDay
-import net.pwall.util.CoDateOutput.outputOffsetDateTime
-import net.pwall.util.CoDateOutput.outputOffsetTime
-import net.pwall.util.CoDateOutput.outputYear
-import net.pwall.util.CoDateOutput.outputYearMonth
-import net.pwall.util.CoDateOutput.outputZonedDateTime
+import io.kstuff.util.CoDateOutput.coOutputCalendar
+import io.kstuff.util.CoDateOutput.coOutputDate
+import io.kstuff.util.CoDateOutput.coOutputInstant
+import io.kstuff.util.CoDateOutput.coOutputLocalDate
+import io.kstuff.util.CoDateOutput.coOutputLocalDateTime
+import io.kstuff.util.CoDateOutput.coOutputLocalTime
+import io.kstuff.util.CoDateOutput.coOutputMonthDay
+import io.kstuff.util.CoDateOutput.coOutputOffsetDateTime
+import io.kstuff.util.CoDateOutput.coOutputOffsetTime
+import io.kstuff.util.CoDateOutput.coOutputYear
+import io.kstuff.util.CoDateOutput.coOutputYearMonth
+import io.kstuff.util.CoDateOutput.coOutputZonedDateTime
+import io.kstuff.util.CoDateOutput.outputCalendar
+import io.kstuff.util.CoDateOutput.outputDate
+import io.kstuff.util.CoDateOutput.outputInstant
+import io.kstuff.util.CoDateOutput.outputLocalDate
+import io.kstuff.util.CoDateOutput.outputLocalDateTime
+import io.kstuff.util.CoDateOutput.outputLocalTime
+import io.kstuff.util.CoDateOutput.outputMonthDay
+import io.kstuff.util.CoDateOutput.outputOffsetDateTime
+import io.kstuff.util.CoDateOutput.outputOffsetTime
+import io.kstuff.util.CoDateOutput.outputYear
+import io.kstuff.util.CoDateOutput.outputYearMonth
+import io.kstuff.util.CoDateOutput.outputZonedDateTime
 
 class CoOutputDateTest {
 

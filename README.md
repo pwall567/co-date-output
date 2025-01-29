@@ -3,7 +3,7 @@
 [![Build Status](https://github.com/pwall567/co-date-output/actions/workflows/build.yml/badge.svg)](https://github.com/pwall567/co-date-output/actions/workflows/build.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Kotlin](https://img.shields.io/static/v1?label=Kotlin&message=v2.0.21&color=7f52ff&logo=kotlin&logoColor=7f52ff)](https://github.com/JetBrains/kotlin/releases/tag/v2.0.21)
-[![Maven Central](https://img.shields.io/maven-central/v/net.pwall.util/co-date-output?label=Maven%20Central)](https://search.maven.org/search?q=g:%22net.pwall.util%22%20AND%20a:%22co-date-output%22)
+[![Maven Central](https://img.shields.io/maven-central/v/io.kstuff/co-date-output?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.kstuff%22%20AND%20a:%22co-date-output%22)
 
 Non-blocking date output functions
 
@@ -19,25 +19,25 @@ output.
 
 ## Dependency Specification
 
-The latest version of the library is 1.6, and it may be obtained from the Maven Central repository.
+The latest version of the library is 2.0, and it may be obtained from the Maven Central repository.
 
 ### Maven
 ```xml
     <dependency>
-      <groupId>net.pwall.util</groupId>
+      <groupId>io.kstuff</groupId>
       <artifactId>co-date-output</artifactId>
-      <version>1.6</version>
+      <version>2.0</version>
     </dependency>
 ```
 ### Gradle
 ```groovy
-    implementation 'net.pwall.util:co-date-output:1.6'
+    implementation 'io.kstuff:co-date-output:2.0'
 ```
 ### Gradle (kts)
 ```kotlin
-    implementation("net.pwall.util:co-date-output:1.6")
+    implementation("io.kstuff:co-date-output:2.0")
 ```
 
 Peter Wall
 
-2025-01-26
+2025-01-29

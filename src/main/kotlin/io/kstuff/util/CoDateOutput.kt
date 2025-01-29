@@ -23,7 +23,7 @@
  * SOFTWARE.
  */
 
-package net.pwall.util
+package io.kstuff.util
 
 import java.time.Instant
 import java.time.LocalDate
@@ -38,8 +38,8 @@ import java.time.ZonedDateTime
 import java.util.Calendar
 import java.util.Date
 
-import net.pwall.util.CoIntOutput.output2Digits
-import net.pwall.util.CoIntOutput.output3Digits
+import io.kstuff.util.CoIntOutput.output2Digits
+import io.kstuff.util.CoIntOutput.output3Digits
 
 /**
  * Non-blocking functions used in the output of date and time values in RFC 3339 string representations.  The functions
